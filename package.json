@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/Excellence-daniel/payroll-system-server#readme",
   "dependencies": {
+    "cloud": "^2.0.2",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "krypter": "^1.0.1",
