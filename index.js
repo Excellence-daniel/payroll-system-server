@@ -1,7 +1,23 @@
 const express = require("express");
 const app = express();
 const cors = require("cors");
+const mongoose = require("mongoose");
 const port = 4020;
+
+const auth = require("./controllers/auth");
+const { mongoUrl } = require("./utils/constants");
+
+mongoose.set("useCreateIndex", true);
+mongoose.set("useUnifiedTopology", true);
+mongoose.set("useFindAndModify", false);
+
+mongoose.connect(mongoUrl);
+
+var conn = mongoose.connection;
+// conn.on('error', console.error.bind(console, 'connection error:'));
+conn.on("error", function (err) {
+  console.log("mongoose connection error:", err.message);
+});
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -10,3 +26,6 @@ app.use(cors());
 app.listen(port, () => {
   console.log("start work on " + port);
 });
+
+app.get("/auth/login", auth.login);
+app.post("/auth/register", auth.register);
