@@ -3,6 +3,7 @@ const app = express();
 const cors = require("cors");
 const mongoose = require("mongoose");
 const port = 4020;
+const config = process.env.NODE_ENV || "dev";
 
 const auth = require("./controllers/auth");
 const { mongoUrl } = require("./utils/constants");
@@ -24,6 +25,7 @@ app.use(express.json());
 app.use(cors());
 
 app.listen(port, () => {
+  console.log({ config });
   console.log("start work on " + port);
 });
 
