@@ -34,7 +34,6 @@ module.exports = {
     if (checkIfUserExists) {
       return response.status(403).send("user with this email already exists");
     }
-    console.log(request.body);
 
     request.body.password = crypt.encrypt(request.body.password);
     const user = await userModel(request.body);
