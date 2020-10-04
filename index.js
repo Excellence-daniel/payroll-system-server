@@ -24,7 +24,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors());
 
-app.listen(port, () => {
+app.listen(process.env.PORT || port, () => {
   console.log({ config });
   console.log("start work on " + port);
 });
