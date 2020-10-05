@@ -7,6 +7,7 @@ const config = process.env.NODE_ENV || "dev";
 
 const auth = require("./controllers/auth");
 const { mongoUrl } = require("./utils/constants");
+const admin = require("./controllers/admin");
 
 mongoose.set("useCreateIndex", true);
 mongoose.set("useUnifiedTopology", true);
@@ -29,5 +30,10 @@ app.listen(process.env.PORT || port, () => {
   console.log("start work on " + port);
 });
 
+// Auth
 app.get("/auth/login", auth.login);
 app.post("/auth/register", auth.register);
+
+// Admin
+app.post("/admin/createEmployee", admin.createEmployee);
+app.get("/admin/getEmployees", admin.getEmployees);
