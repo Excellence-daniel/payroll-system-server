@@ -37,3 +37,5 @@ app.post("/auth/register", auth.register);
 // Admin
 app.post("/admin/createEmployee", admin.createEmployee);
 app.get("/admin/getEmployees", admin.getEmployees);
+app.post("/admin/createReport", admin.createReport);
+app.get("/admin/getReports", admin.getReports);
